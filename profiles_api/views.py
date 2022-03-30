@@ -114,4 +114,28 @@ class UserProfileFeedViewSet(viewsets.ModelViewSet):
         """Sets the user profile to the logged in user"""
         serializer.save(user_profile = self.request.user)
 
-    
+class BotViewSet(viewsets.ViewSet):
+    serializer_class = serializers.BotSerializer
+    def list(self, request):
+        """Manages the functions of the bot"""
+        a_viewset = [
+            'Uses actions (list, create, retrieve, update, partial update)',
+            'Automatically maps to URLS using Routers', 
+            'Provides more functionality with less code'
+        ]
+        return Response({'message': 'Hello!', 'a_viewset': a_viewset})
+    def create(self, request):
+        """Creates a new hello message"""
+        serializer = self.serializer_class(data=request.data)
+
+        if serializer.is_valid():
+            name = serializer.validated_data.get('firstName')
+            message = f'Hello {name}!'
+            print(request.data)
+            print(message)
+            return Response({'message': message})
+        else: 
+            return Response(
+                serializer.errors,
+                status.HTTP_400_BAD_REQUEST
+            )

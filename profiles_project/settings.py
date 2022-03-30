@@ -25,7 +25,7 @@ SECRET_KEY = '+4bbb$=1rbnsq!*lf1fe3-7$yc=dhw_#0)qw*%lbi7@kags8rc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fc62-189-196-44-134.ngrok.io', '127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'profiles_api',
 ]
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%Y-%m-%dT%H:%M:%S.%fZ",
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

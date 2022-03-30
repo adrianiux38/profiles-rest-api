@@ -6,6 +6,8 @@ from django.conf import settings
 
 # Create your models here.
 
+
+
 class UserProfileManager(BaseUserManager):
 	def create_user(self, email, name, password=None):
 		"""Create a new user profile"""
